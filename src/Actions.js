@@ -1,15 +1,22 @@
 import * as ActionTypes from "./ActionTypes";
 
-export const increment = counterCaption => {
+export const addTodo = todoInfo => {
     return {
-        type: ActionTypes.INCREMENT,
+        type: ActionTypes.ADD_TODO,
+        todoInfo,
+    }
+}
+
+export const isSelected = counterCaption => {
+    return  {
+        type: ActionTypes.IS_SELECTED,
         counterCaption,
     }
 }
 
-export const decrement = counterCaption => {
-    return  {
-        type: ActionTypes.DECREMENT,
+export const filterTypes = counterCaption => {
+    return {
+        type: ActionTypes.FILTER_TYPES,
         counterCaption,
     }
 }

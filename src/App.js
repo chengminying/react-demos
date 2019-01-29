@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
-import CountPanel from "./views/CountPanel";
+import Todo from './views/Todo';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <CountPanel />
+        <Todo />
       </div>
     );
   }
