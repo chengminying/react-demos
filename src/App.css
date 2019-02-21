@@ -15,3 +15,11 @@
     text-align: center;
     line-height: 40px
 }
+
+.isSelect {
+    text-decoration: line-through;
+}
+
+.unSelect {
+    text-decoration: none;
+}

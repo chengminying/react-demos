@@ -7,10 +7,11 @@ export const addTodo = todoInfo => {
     }
 }
 
-export const isSelected = counterCaption => {
+export const isSelected = (isSelect, index) => {
     return  {
         type: ActionTypes.IS_SELECTED,
-        counterCaption,
+        accomplish: isSelect,
+        index,
     }
 }
 

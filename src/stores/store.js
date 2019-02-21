@@ -1,11 +1,11 @@
-import { createStore, compose, applyMiddleware } from "redux";
-import ReduxThunk from 'redux-thunk';
-import reducers from '../Reducer';
+import { createStore, combineReducers } from 'redux';
 
-const reduxDevtools = window.devToolsExtension ? window.devToolsExtension() : f => f;
-const store = createStore(reducers,compose(
-    applyMiddleware(ReduxThunk),
-    reduxDevtools
-))
+import { reducer as todoReducer } from './todos';
+import { reducer as filterReducer } from './filter';
 
-export default store;
+const reducer = combineReducers({
+    todos: todoReducer,
+    filter: filterReducer,
+})
+
+export default createStore(reducer);
