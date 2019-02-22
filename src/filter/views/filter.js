@@ -1,11 +1,12 @@
 import React from 'react'
-import * as FilterTypes from "../actionTypes";
+import { filterTypes } from "../filterTypes";
+import Link from './link';
 
 const Filter = () => (
     <p>
-        <Link fllter={FilterTypes.ALL}>{FilterTypes.ALL}</Link>
-        <Link fllter={FilterTypes.COMPLETED}>{FilterTypes.COMPLETED}</Link>
-        <Link fllter={FilterTypes.UNCOMPLETED}>{FilterTypes.UNCOMPLETED}</Link>
+        <Link filter={filterTypes.ALL}>{filterTypes.ALL}</Link>
+        <Link filter={filterTypes.COMPLETED}>{filterTypes.COMPLETED}</Link>
+        <Link filter={filterTypes.UNCOMPLETED}>{filterTypes.UNCOMPLETED}</Link>
     </p>
 )
 

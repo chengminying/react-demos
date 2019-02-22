@@ -2,7 +2,7 @@ import React from 'react'
 import { toggleTodo, removeTodo } from '../actions';
 import { connect } from 'react-redux';
 import TodoItem from './todoItem';
-import FilterTypes from '../../filter/filterTypes';
+import { filterTypes } from '../../filter/filterTypes';
 
 
 const TodoList = ({ todos, onToggleTodo, onRemoveTodo }) => (
@@ -24,11 +24,11 @@ const TodoList = ({ todos, onToggleTodo, onRemoveTodo }) => (
 const mapStateToProps = state => ({
     todos: ((todos, filter) => {
         switch (filter) {
-            case FilterTypes.ALL:
+            case filterTypes.ALL:
                 return todos;
-            case FilterTypes.COMPLETED:
+            case filterTypes.COMPLETED:
                 return todos.filter(item => item.completed);
-            case FilterTypes.UNCOMPLETED:
+            case filterTypes.UNCOMPLETED:
                 return todos.filter(item => !item.completed);
             default:
                 return todos;

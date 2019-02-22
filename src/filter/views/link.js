@@ -3,12 +3,12 @@ import { selectFilter } from '../action';
 import { connect } from 'react-redux'
 
 
-const List = (active, children, onClick) => {
+const List = ({ active, children, onClick }) => {
     if (active) {
         return <b>{children}</b>
     } else {
         return (
-            <a className="" href="#" onClick={ e => {
+            <a className="" href="#" onClick={e => {
                 e.preventDefault();
                 onClick();
             }}>{children}</a>
@@ -22,6 +22,8 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
     onClick: () => {
+        console.log(ownProps);
+        
         dispatch(selectFilter(ownProps.filter));
     }
 })

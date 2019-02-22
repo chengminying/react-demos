@@ -1,12 +1,14 @@
-import { ALL, COMPLETED, UNCOMPLETED} from './actionTypes'
+import { SELECT_FILTER } from './actionTypes';
+import { filterTypes } from './filterTypes';
 
-export default (state = initialState, action) => {
+export default (state = filterTypes.ALL, action) => {
   switch (action.type) {
 
-  case ALL:
-    return { ...state, }
-
-  default:
-    return state
+    case SELECT_FILTER:
+    console.log(action);
+    
+      return action.filter;
+    default:
+      return state
   }
 }
