@@ -17,7 +17,7 @@
             "host": "118.25.16.173",
             "ref": "origin/master",
             "repo": "git@github.com:chengminying/react-demos.git",
-            "path": "www/reactApp/production",
+            "path": "/www/reactApp/production",
             "ssh_options": "StrictHostKeyChecking=no",
             "env": {
                 "NODE_ENV":"production"
