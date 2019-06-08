@@ -1,0 +1,144 @@
+.am-tab-bar{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+}
+#chat-page .fixd-header.am-navbar{
+	position: fixed;
+	top: 0;
+	width: 100%;
+}
+#chat-page .send-msg-input {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+}
+
+/*聊天框发送方保持在列表最右边样式*/
+#chat-page .my-list .spe .am-list-extra {
+    flex-basis: initial;
+}
+
+#chat-page #chat-me #me .am-list-extra{
+	flex-basis: auto;
+}
+
+#chat-page #chat-me #me .am-list-content{
+	padding-right: 15px;
+	text-align: right !important;
+}
+
+/*聊天组件聊天气泡样式,发送者样式*/
+#chat-page #chat-me  #me .am-list-item-middle  .am-list-line  .am-list-content {
+	color: #fff;
+	margin-right: 10px;
+	border-radius: 10px;
+	padding-left: 15px;
+	background-color: #2ea8ff; 
+}
+
+#chat-page #chat-me #me .am-list-item-middle  .am-list-line  .am-list-content::after {
+	content:'';
+	display: inline-block;
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 7px;
+	border-color: transparent transparent transparent #2ea8ff;
+	position: absolute;
+	right: 35px;
+}
+
+#chat-page #chat-me  #me .am-list-item {
+	background-color: transparent; 
+	justify-content: flex-end;
+}
+
+#chat-page #chat-me .am-list-item .am-list-line {
+	flex: 0 1 auto;
+}
+
+#chat-page #chat-me  #me .am-list-line {
+	justify-content: flex-end;
+}
+
+#chat-page #chat-me .am-list-body {
+	background-color: transparent; 
+}
+
+#chat-page #chat-me #me .am-list-body::before {
+	display: none;
+}
+
+#chat-page #chat-me #me .am-list-body::after {
+	display: none;
+}
+
+/*聊天组件聊天气泡样式,接收者样式*/
+#chat-page #chat-me #other .am-list-item {
+	background-color: transparent; 
+}
+
+#chat-page #chat-me #other .am-list-body::before {
+	display: none;
+}
+
+#chat-page #chat-me #other .am-list-body::after {
+	display: none;
+}
+
+#chat-page #chat-me #other .am-list-line {
+	padding-left: 15px;
+}
+
+#chat-page #chat-me #other .am-list-thumb {
+	margin-right: 0px;
+}
+
+#chat-page #chat-me #other .am-list-content {
+	color: #fff;
+	margin-right: 10px;
+	border-radius: 10px;
+	padding-left: 15px;
+	padding-right: 15px;
+	background-color: #2ea8ff; 
+}
+
+#chat-page #chat-me #other .am-list-content::before {
+	content: '';
+	display: inline-block;
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 7px;
+	border-color: transparent #2ea8ff transparent transparent;
+	position: absolute;
+	left: 3px;
+}
+
+#chat-page #chat-me {
+	padding-bottom: 45px;
+}
+
+/*emoji表情居中*/
+#chat-page .am-grid-icon {
+	display: none;
+}
+#chat-page .am-grid-text {
+	margin-top: 0;
+}
+
+/*聊天界面样式*/
+#chat-container {
+
+	padding-bottom: 45px;
+	padding-top: 55px;
+    overflow: hidden;
+}
+
+#nav-bar-style {
+	position: fixed;
+    width: 100%;
+    z-index: 1;
+}

@@ -1,18 +1,47 @@
 const express = require('express');
-const mongoose = require('mongoose');
+const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
+const socketIO = require("socket.io");
+const path = require("path");
+
+//引入本地模块
+const model = require('./model');
+const userRouter = require("./user");
+const ChatModel = model.getModel('chat') 
+
+//express实例
+const app = express();
 
 //端口
 const PORT = 8088;
 
-//连接mongodb
-const DB_URL = "mongodb://localhost:27017/job";
-mongoose.connect(DB_URL);
-mongoose.connection.on('connected', function() {
-    console.log("mongoDB连接成功");
+//socket.io和express配合使用，需要将socket.io和http的接口统一
+const server = require('http').Server(app);
+const socket = socketIO(server);
+
+socket.on('connection', function(instance) { //监听前端socket连接
+    instance.on('sendMsg', function(data) { //连接建立后，连接实例监听sendMsg的广播消息
+        const { from, to, msg } = data;
+        const chat_id = [from, to].sort().join('_');
+        ChatModel.create({chat_id, from, to, msg}, function(err, doc) {
+            socket.emit('receiveMsg', Object.assign({}, doc._doc));
+        })
+    })
 })
 
-const app = express();
+//使用body-parser处理请求
+app.use(bodyParser.json());
 
-app.listen(PORT, function() {
+//使用cookie
+app.use(cookieParser());
+
+//多级路由
+app.use('/user', userRouter);
+
+//静态资源地址
+// app.use('/', express.static())
+console.log(path.resolve('build'))
+
+server.listen(PORT, function() {
     console.log("node服务启动成功,端口为:", PORT);
 })
