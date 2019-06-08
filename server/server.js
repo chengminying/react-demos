@@ -39,8 +39,13 @@ app.use(cookieParser());
 app.use('/user', userRouter);
 
 //静态资源地址
-// app.use('/', express.static())
-console.log(path.resolve('build'))
+app.use('/', express.static(path.resolve('build')));
+app.use(function(req, res, next) {
+    if(req.url.startsWith('/user/') || req.url.startsWith('/static/')) {
+        return next();
+    }
+    return res.sendFile(path.resolve('build/index.html'));
+})
 
 server.listen(PORT, function() {
     console.log("node服务启动成功,端口为:", PORT);
