@@ -4,7 +4,7 @@
             "name": "reactApp",
             "script": "index.js",
             "env": {
-                "COMMON_VARIBLE": "true"
+                "COMMON_VARIABLE": "true"
             },
             "env_production": {
                 "NODE_ENV": "production"
@@ -15,10 +15,9 @@
         "production": {
             "user": "ubuntu",
             "host": "118.25.16.173",
-            "port": "8088",
             "ref": "origin/master",
             "repo": "git@github.com:chengminying/react-demos.git",
-            "path": "/www/reactApp/production",
+            "path": "www/reactApp/production",
             "ssh_options": "StrictHostKeyChecking=no",
             "env": {
                 "NODE_ENV":"production"
