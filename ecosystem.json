@@ -1,0 +1,28 @@
+{
+    "apps": [
+        {
+            "name": "reactApp",
+            "script": "index.js",
+            "env": {
+                "COMMON_VARIBLE": "true"
+            },
+            "env_production": {
+                "NODE_ENV": "production"
+            }
+        }
+    ],
+    "deploy": {
+        "production": {
+            "user": "ubuntu",
+            "host": "118.25.16.173",
+            "port": "8088",
+            "ref": "origin/master",
+            "repo": "git@github.com:chengminying/react-demos.git",
+            "path": "/www/reactApp/production",
+            "ssh_options": "StrictHostKeyChecking=no",
+            "env": {
+                "NODE_ENV":"production"
+            }
+        }
+    }
+}
