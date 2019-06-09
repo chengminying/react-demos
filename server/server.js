@@ -45,7 +45,7 @@ app.use(function(req, res, next) {
     if(req.url.startsWith('/user/') || req.url.startsWith('/static/')) {
         return next();
     }
-    return res.sendFile(path.resolve('/build/index.html'));
+    return res.sendFile(path.resolve('build/index.html'));
 })
 
 server.listen(PORT, function() {
