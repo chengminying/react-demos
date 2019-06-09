@@ -57,6 +57,7 @@ export function sendMsg({ from, to, msg }) {
     }
 }
 export function receiveMsg() {
+    receiveMsg = () => ({ type: "default",}); //让那个receice只执行一次
     return (dispatch, getState) => {
         socket.on('receiveMsg', function (data) {
             const user_id = getState().user._id;
@@ -79,7 +80,6 @@ const initState = {
     chatmsglist: [],
     unread: 0,
     users: {},
-    isreceive: false,
 }
 
 //chat reducer

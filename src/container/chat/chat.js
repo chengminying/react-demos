@@ -47,15 +47,8 @@ class Chat extends React.Component {
     }
     componentDidMount() {
         this.fixCarousel();
-        console.log('开始')
         this.props.onLoadMsgList();
-        console.log(this.props)
-        //判断users是否有值，有值证明onLoadMsgList()已经执行过
-        console.log(this.props,'aaaaaaaaaaa')
-        let len = Object.keys(this.props.chatReducer.users).length
-        setTimeout(() => {
-            if (!len) this.props.onReceiveMsg();
-        },50)
+        this.props.onReceiveMsg();
         this.fixWindow();
     }
     componentWillUnmount() {

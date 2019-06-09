@@ -13,12 +13,10 @@ import QueueAnim from "rc-queue-anim";
 
 class Dashboard extends Component {
     componentDidMount() {
-        let len = Object.keys(this.props.chatReducer.users).length;
         this.props.onLoadMsgList();
-        setTimeout(() => {
-            if (!len) this.props.onReceiveMsg();
-        },50)
+        this.props.onReceiveMsg();
     }
+
     render() {
         const user = this.props.user;
         const pathname = this.props.location.pathname;

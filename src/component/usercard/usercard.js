@@ -12,7 +12,7 @@ class UserCard extends React.Component {
         this.handleClick = this.handleClick.bind(this)
     }
     handleClick(v) {
-        this.props.history.push(`/chat/${v._id}`);
+        this.props.history.push(`/chat/${v._id}?`);
     }
     render() {
         return (
