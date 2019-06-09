@@ -30,6 +30,7 @@ class Chat extends React.Component {
         const from = this.props.user._id;
         const to = this.props.match.params.user; //聊天对象url参数是user_id
         const msg = this.state.text;
+        console.log('onSendMsg到了')
         if (msg) this.props.onSendMsg({ from, to, msg })
         this.setState({ text: '', })
     }

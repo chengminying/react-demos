@@ -6,9 +6,10 @@ const socket_port = 8088;
 //本地ip
 // const socket_url = '192.168.9.105:' 
 //服务器地址
-const remote_socket_url = '118.25.16.173' 
+const remote_socket_url = '118.25.16.173'
 
 const socket = io('ws://' + remote_socket_url + socket_port);
+console.log('ws://' + remote_socket_url + socket_port)
 
 //action types
 const MSG_LIST_LOAD = 'msg_list_load';
@@ -53,6 +54,7 @@ export function getChatList() {
 }
 export function sendMsg({ from, to, msg }) {
     return dispatch => {
+        console.log('发送chenggong')
         socket.emit('sendMsg', { from, to, msg });
     }
 }
@@ -102,7 +104,6 @@ export function chatReducer(state = initState, action) {
             }
         case MSG_READING:
             const { from, num } = action.payload
-            console.log(num)
             return {
                 ...state,
                 chatmsglist: state.chatmsglist.map(v => ({ ...v, is_read: from === v.from ? true : v.is_read })),

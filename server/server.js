@@ -20,6 +20,7 @@ const server = require('http').Server(app);
 const socket = socketIO(server);
 
 socket.on('connection', function(instance) { //监听前端socket连接
+    console.log('有连接进来')
     instance.on('sendMsg', function(data) { //连接建立后，连接实例监听sendMsg的广播消息
         const { from, to, msg } = data;
         const chat_id = [from, to].sort().join('_');
@@ -40,11 +41,12 @@ app.use('/user', userRouter);
 
 //静态资源地址
 app.use('/', express.static(path.resolve('build')));
+
 app.use(function(req, res, next) {
     if(req.url.startsWith('/user/') || req.url.startsWith('/static/')) {
         return next();
     }
-    return res.sendFile(path.resolve('build/index.html'));
+    return res.sendFile(path.resolve('/build/index.html'));
 })
 
 server.listen(PORT, function() {
