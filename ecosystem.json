@@ -15,7 +15,6 @@
         "production": {
             "user": "root",
             "host": "118.25.16.173",
-            "port": "22",
             "ref": "origin/master",
             "repo": "git@github.com:chengminying/react-demos.git",
             "path": "/www/Website/production",
