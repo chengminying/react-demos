@@ -30,7 +30,6 @@ class Chat extends React.Component {
         const from = this.props.user._id;
         const to = this.props.match.params.user; //聊天对象url参数是user_id
         const msg = this.state.text;
-        console.log('onSendMsg到了')
         if (msg) this.props.onSendMsg({ from, to, msg })
         this.setState({ text: '', })
     }
@@ -48,13 +47,15 @@ class Chat extends React.Component {
     }
     componentDidMount() {
         this.fixCarousel();
+        console.log('开始')
         this.props.onLoadMsgList();
+        console.log(this.props)
         //判断users是否有值，有值证明onLoadMsgList()已经执行过
         console.log(this.props,'aaaaaaaaaaa')
         let len = Object.keys(this.props.chatReducer.users).length
-        if (!len) {
-            this.props.onReceiveMsg();
-        }
+        setTimeout(() => {
+            if (!len) this.props.onReceiveMsg();
+        },50)
         this.fixWindow();
     }
     componentWillUnmount() {

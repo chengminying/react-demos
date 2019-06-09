@@ -15,9 +15,9 @@ class Dashboard extends Component {
     componentDidMount() {
         let len = Object.keys(this.props.chatReducer.users).length;
         this.props.onLoadMsgList();
-        if (!len) {
-            this.props.onReceiveMsg();
-        }
+        setTimeout(() => {
+            if (!len) this.props.onReceiveMsg();
+        },50)
     }
     render() {
         const user = this.props.user;

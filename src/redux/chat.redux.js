@@ -9,7 +9,6 @@ const socket_port = 8088;
 const remote_socket_url = '118.25.16.173:'
 
 const socket = io('ws://' + remote_socket_url + socket_port);
-console.log('ws://' + remote_socket_url + socket_port)
 
 //action types
 const MSG_LIST_LOAD = 'msg_list_load';
@@ -54,7 +53,6 @@ export function getChatList() {
 }
 export function sendMsg({ from, to, msg }) {
     return dispatch => {
-        console.log('发送chenggong')
         socket.emit('sendMsg', { from, to, msg });
     }
 }
@@ -81,6 +79,7 @@ const initState = {
     chatmsglist: [],
     unread: 0,
     users: {},
+    isreceive: false,
 }
 
 //chat reducer
