@@ -6,7 +6,7 @@ const socket_port = 8088;
 //本地ip
 // const socket_url = '192.168.9.105:' 
 //服务器地址
-const remote_socket_url = '118.25.16.173'
+const remote_socket_url = '118.25.16.173:'
 
 const socket = io('ws://' + remote_socket_url + socket_port);
 console.log('ws://' + remote_socket_url + socket_port)
