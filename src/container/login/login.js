@@ -12,6 +12,9 @@ class Login extends React.Component {
         this.state = {
             user: '',
             pwd: '',
+            reverse: false,
+            pwdType: 'password',
+            eye: "browse.png"
         }
         this.register = this.register.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -31,13 +34,13 @@ class Login extends React.Component {
     //登录按钮派发action
     handleClick() {
         this.props.onLogin(this.state);
-        if(this.props.msg) {
+        if (this.props.msg) {
             Toast.fail(this.props.msg, 1, this.onClose)
         }
     }
     //msg存在，弹出提示
     shouldComponentUpdate(nextProps) {
-        if(nextProps.msg) {
+        if (nextProps.msg) {
             Toast.fail(nextProps.msg, 1, this.onClose)
             return false;
         }
@@ -49,20 +52,45 @@ class Login extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div className="login-register">
                 {this.props.redirectTo && this.props.redirectTo !== '/login' ? <Redirect to={this.props.redirectTo} /> : null}
-                <Logo></Logo>
-                <h1 style={{paddingLeft: "20px"}}>用户登录</h1>
+                <Logo reverse={this.state.reverse}></Logo>
+                <h1 style={{ paddingLeft: "20px" }}>用户登录</h1>
                 <WingBlank>
                     <List>
                         <InputItem
-                            onChange={v=> {this.handleChange("user", v)}}
-                        >用户</InputItem>
+                            onChange={v => { this.handleChange("user", v) }}
+                        >
+                            <div style={{
+                                backgroundImage: `url(${require("./image/user.png")})`,
+                                backgroundSize: 'cover', height: '30px', width: '30px'
+                            }}></div>
+                        </InputItem>
                         <InputItem
-                            onChange={v=> {this.handleChange("pwd", v)}}
-                        >密码</InputItem>
+                            onChange={v => { this.handleChange("pwd", v) }}
+                            onFocus={v => { this.setState({ reverse: true }) }}
+                            onBlur={v => { this.setState({ reverse: false }) }}
+                            type={this.state.pwdType} 
+                            extra={
+                                <div onClick={() => {
+                                    this.setState({
+                                        pwdType: this.state.pwdType === 'password' ? 'text' : 'password',
+                                        eye: this.state.eye === 'browse.png' ? 'browse_fill.png' : 'browse.png'
+                                    })
+                                }}>
+                                    <img src={`${require("./image/"+this.state.eye)}`} title="显示密码" alt="显示密码"/>
+                                </div>
+                            }
+                        >
+                            <div
+                                style={{
+                                    backgroundImage: `url(${require("./image/password.png")})`,
+                                    backgroundSize: 'cover', height: '30px', width: '30px'
+                                }}
+                            ></div>
+                        </InputItem>
                     </List>
-                    <WhiteSpace size="xl"/>
+                    <WhiteSpace size="xl" />
                     <Button type="primary" onClick={this.handleClick}>登录</Button>
                     <WhiteSpace />
                     <Button onClick={this.register} type="primary">注册</Button>

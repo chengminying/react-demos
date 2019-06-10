@@ -142,3 +142,7 @@
     width: 100%;
     z-index: 1;
 }
+
+.login-register .am-list-item .am-input-label.am-input-label-5 {
+	width: 50px !important;
+}

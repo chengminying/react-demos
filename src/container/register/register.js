@@ -16,6 +16,7 @@ class Register extends React.Component {
             pwd: '',
             repeatpwd: '',
             type: "genius",
+            reverse: false,
         }
         this.handleRegister = this.handleRegister.bind(this)
         this.onClose = this.onClose.bind(this);
@@ -54,7 +55,7 @@ class Register extends React.Component {
         return (
             <div>
                 {this.props.redirectTo ? <Redirect to={this.props.redirectTo} /> : null}
-                <Logo></Logo>
+                <Logo reverse={this.state.reverse}></Logo>
                 <h1 style={{paddingLeft: "20px"}}>用户注册</h1>
                 <WingBlank>
                     <List>
@@ -64,10 +65,14 @@ class Register extends React.Component {
                         <InputItem
                             type="password"
                             onChange={v=> {this.handleChange("pwd", v)}}
+                            onFocus={v => {this.setState({reverse: true})}}
+                            onBlur={v => {this.setState({reverse: false})}}
                         >密码</InputItem>
                         <InputItem
                             type="password"
                             onChange={v=> {this.handleChange("repeatpwd", v)}}
+                            onFocus={v => {this.setState({reverse: true})}}
+                            onBlur={v => {this.setState({reverse: false})}}
                         >确认密码</InputItem>
                         <RadioItem 
                             checked={this.state.type === 'genius' }
@@ -83,7 +88,7 @@ class Register extends React.Component {
                         type="primary"
                         inline
                         onClick={this.handleRegister}
-                        style={{marginRight: '5px', width: '48%'}}
+                        style={{marginRight: '5px', width: '47%'}}
                     >注册</Button>
                     <Button
                         type="ghost"

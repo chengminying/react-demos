@@ -8,6 +8,7 @@ const REMOVE_MSG = 'remove_msg';
 const LOGIN_SUCCESS = 'login_success';
 const GET_USERINFO = 'load_userinfo';
 const LOGOUT = 'logout';
+const NAVBAR_SWITCH = 'navbar_switch'
 
 
 //Anysc action creator
@@ -81,6 +82,9 @@ export function removeMsg() { //提示消息后删除msg action
 export function getUserInfo(data) { //校验VerifyRouter组件获取用户信息
     return { type: GET_USERINFO, payload: data }
 }
+export function navBarSwitch() {
+    return { type: NAVBAR_SWITCH }
+}
 
 //初始状态
 const initState = {
@@ -90,6 +94,7 @@ const initState = {
     pwd: '',
     type: '',
     redirectTo: '',
+    islight: false,
 }
 //reducer
 export function user(state = initState, action) {
@@ -124,6 +129,8 @@ export function user(state = initState, action) {
             }
         case LOGOUT:
             return { ...initState, redirectTo: '/login' }
+        case NAVBAR_SWITCH: 
+            return { ...state, islight: !state.islight }
         default:
             return state;
     }
