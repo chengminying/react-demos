@@ -40,7 +40,7 @@ app.use('/user', userRouter);
 
 //静态资源地址
 app.use('/', express.static(path.resolve('build')));
-
+console.log(path.resolve('build'))
 app.use(function(req, res, next) {
     if(req.url.startsWith('/user/') || req.url.startsWith('/static/')) {
         return next();
